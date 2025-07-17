@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Shorts Auto Scroll",
+  "version": "2.1.0",
+  "description": "YouTube Shorts videolarını otomatik olarak kaydırır. Video bittiğinde bir sonraki videoya geçiş yapar. Profesyonel ve güvenilir.",
+  "author": "Emre Göçmen <info@emregocmen.com>",
+  "homepage_url": "https://emregocmen.com",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://www.youtube.com/*",
+    "*://m.youtube.com/*",
+    "*://youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.youtube.com/*",
+        "*://m.youtube.com/*",
+        "*://youtube.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube Shorts Auto Scroll - Video sonunda otomatik geçiş",
+    "default_icon": {
+      "48": "icon48.png",
+      "96": "icon96.png"
+    }
+  },
+  "icons": {
+    "48": "icon48.png",
+    "96": "icon96.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icon48.png", "icon96.png"],
+      "matches": ["*://www.youtube.com/*"]
+    }
+  ],
+  "minimum_chrome_version": "88"
+}
